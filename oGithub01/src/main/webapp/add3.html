@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			function chk() { // onsubmit의 return 다음에 오는 함수명과 이름이 같도록
+				if(!frm.num.value){
+					alert("숫자 입력 ?");
+					frm.num.focus();
+					return false;
+					// 함수에서 빠져나감 -> value가 Add3로 넘어가지 않고 대기
+				}
+				if(isNaN(frm.num.value)){
+					alert("숫자가 아님 헐 ?");
+					frm.num.focus;
+					frm.num.value = ""; // 입력된 글자 지우기
+					return false;
+				}
+				
+				return true;
+					
+			}
+		</script>
+	</head>
+	<body>
+		<h1>숫자를 입력하세요</h1>
+		<!-- 원래 form의 name은 필수는 아니지만, 자바 스크립트에서 사용하기 위해 설정해줌 -->
+		<form action="Add3" name="frm" method="get" onsubmit="return chk()"> <!-- default는 get방식 -->
+			숫자 : <input type="text" name="num"><p>
+			위치 : <input type="text" name="loc"><p>
+				  <input type="submit" value="확인">
+			<!-- 확인 버튼을 누르면 value값이 name에 담겨져서 Add3(서버)로 넘어감 -->
+		</form>
+	</body>
+</html>
